@@ -13,44 +13,44 @@ This project demonstrates setting up a VPN using WireGuard on a Raspberry Pi, al
 This project focuses on creating a WireGuard VPN server on a Raspberry Pi. It demonstrates how to connect both Windows and macOS devices to the VPN server to enable remote secure access to the Raspberry Pi’s network. By utilizing the WireGuard protocol, this solution offers a high-performance VPN with modern cryptography.
 
 ## WireGuard Setup Process
-1. Install WireGuard on the Raspberry Pi
+1. __Install WireGuard on the Raspberry Pi__
 
 - Begin by installing WireGuard on your Raspberry Pi. You can either use a package manager (e.g., apt) or compile it from source.
 - After installation, configure the server to act as a VPN hub for external devices.
 
-2. Configure the VPN
+2. __Configure the VPN__
 
 - Configure the WireGuard server using the appropriate key pairs, allowed IP ranges, and DNS settings. These configurations are stored in a .conf file, which the server uses to accept incoming connections.
 
-3. Client Configuration
+3. __Client Configuration__
 
 - Download and install WireGuard on your Windows and macOS devices.
 - Use the WireGuard GUI to generate the necessary public/private keys and create a new tunnel using the server’s information.
 
 ## Configuring WireGuard Using the GUI
 
-1. Install WireGuard
+1. __Install WireGuard__
 Download and install the WireGuard application on your system (available for Windows, macOS, and Linux).
 
-2. Create a New Tunnel
+2. __Create a New Tunnel__
 Open the WireGuard application, then click Create a new tunnel or Add Tunnel.
 
-3. Generate Key Pairs
+3. __Generate Key Pairs__
 The GUI will generate a public/private key pair for your device. These keys are used for securing the connection.
 
-4. Configure the Tunnel
+4. __Configure the Tunnel__
 In the configuration window, input your connection details:
 
 - PrivateKey: Generated for your device.
 - Address: Client's IP address, provided by the VPN server.
 - DNS: Optionally specify the DNS server (e.g., 8.8.8.8).
 
-5. Add Peer (Server Information)
+5. __Add Peer (Server Information)__
 Add the VPN server information:
 
 - PublicKey: Public key of the VPN server.
 - Endpoint: Server IP and port (e.g., vpn.example.com:51820).
 - AllowedIPs: Use 0.0.0.0/0, ::/0 to route all traffic through the VPN.
 
-6. Activate the Connection
+6. __Activate the Connection__
 Once configured, click Activate or Save to bring the VPN tunnel online.
