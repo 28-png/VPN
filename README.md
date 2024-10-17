@@ -40,5 +40,3 @@ Integrating additional devices into the VPN.
 Automating the configuration process with scripts.
 Adding monitoring and logging features for network traffic.
 
-# License
-This project is licensed under the MIT License.
