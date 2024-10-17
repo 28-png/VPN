@@ -1,42 +1,56 @@
 # WireGuard VPN Setup on Raspberry Pi
-Project Overview
-This project demonstrates the creation of a secure VPN using WireGuard on a Raspberry Pi, enabling remote access to a Windows laptop and a MacBook over an encrypted network. The goal is to provide a secure way to connect and communicate across devices via a private VPN, ensuring data privacy and security.
 
-# Tools Used
-WireGuard (VPN software)
-Raspberry Pi (VPN server)
-Windows OS (Client)
-macOS (Client)
-SSH (For secure remote access)
-Features
-Secure VPN: Implements WireGuard VPN on Raspberry Pi, providing encrypted communication between devices.
-Cross-Platform Compatibility: Enables remote access between Windows and macOS machines.
-Data Privacy: Secures communication channels and shields traffic from external networks.
-Prerequisites
-Before starting, ensure you have the following:
+This project demonstrates setting up a VPN using WireGuard on a Raspberry Pi, allowing secure connections from multiple devices, including Windows and macOS. The goal is to provide a lightweight and efficient VPN solution for secure access to the local network from remote locations.
 
-# A Raspberry Pi running Linux.
-WireGuard installed on your Raspberry Pi, Windows laptop, and MacBook.
-SSH access to the Raspberry Pi for remote configuration.
-Setup Instructions
-Install WireGuard on the Raspberry Pi by following the steps in the official documentation here.
+## Tools Used
+* WireGuard: For VPN setup and secure tunneling.
+* Raspberry Pi: Acts as the VPN server running WireGuard.
+* Windows and macOS: Devices connected to the VPN server using WireGuard client.
+* SSH: Used for server management and client configurations.
+* Paramiko & Python: Automating device information retrieval via SSH connections  to be processed and stored.
 
-Configure the Raspberry Pi as the WireGuard server:
+## Project Overview
+This project focuses on creating a WireGuard VPN server on a Raspberry Pi. It demonstrates how to connect both Windows and macOS devices to the VPN server to enable remote secure access to the Raspberry Pi’s network. By utilizing the WireGuard protocol, this solution offers a high-performance VPN with modern cryptography.
 
-# Generate public and private keys.
-Set up the WireGuard server configuration file with proper IP address ranges and firewall rules.
-Install WireGuard on your clients (Windows and Mac) and import the .ovpn configuration files for both devices.
+## WireGuard Setup Process
+1. Install WireGuard on the Raspberry Pi
 
-Connect Clients to the VPN by enabling the WireGuard interface on your Windows laptop and MacBook.
+- Begin by installing WireGuard on your Raspberry Pi. You can either use a package manager (e.g., apt) or compile it from source.
+- After installation, configure the server to act as a VPN hub for external devices.
 
-Verify the Connection:
+2. Configure the VPN
 
-Ping between devices or check if the remote devices are accessible.
-Usage
-Once the setup is complete, use the WireGuard client on each device to initiate a connection to the VPN. All traffic between the devices will now be routed securely through the WireGuard VPN.
+- Configure the WireGuard server using the appropriate key pairs, allowed IP ranges, and DNS settings. These configurations are stored in a .conf file, which the server uses to accept incoming connections.
 
-# Future Plans
-Integrating additional devices into the VPN.
-Automating the configuration process with scripts.
-Adding monitoring and logging features for network traffic.
+3. Client Configuration
 
+- Download and install WireGuard on your Windows and macOS devices.
+- Use the WireGuard GUI to generate the necessary public/private keys and create a new tunnel using the server’s information.
+
+## Configuring WireGuard Using the GUI
+
+1. Install WireGuard
+Download and install the WireGuard application on your system (available for Windows, macOS, and Linux).
+
+2. Create a New Tunnel
+Open the WireGuard application, then click Create a new tunnel or Add Tunnel.
+
+3. Generate Key Pairs
+The GUI will generate a public/private key pair for your device. These keys are used for securing the connection.
+
+4. Configure the Tunnel
+In the configuration window, input your connection details:
+
+- PrivateKey: Generated for your device.
+- Address: Client's IP address, provided by the VPN server.
+- DNS: Optionally specify the DNS server (e.g., 8.8.8.8).
+
+5. Add Peer (Server Information)
+Add the VPN server information:
+
+- PublicKey: Public key of the VPN server.
+- Endpoint: Server IP and port (e.g., vpn.example.com:51820).
+- AllowedIPs: Use 0.0.0.0/0, ::/0 to route all traffic through the VPN.
+
+6. Activate the Connection
+Once configured, click Activate or Save to bring the VPN tunnel online.
