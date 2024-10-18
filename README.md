@@ -54,3 +54,15 @@ Add the VPN server information:
 
 6. __Activate the Connection__
 Once configured, click Activate or Save to bring the VPN tunnel online.
+
+## Future Enhancements: Inventory Management Feature
+
+As part of the ongoing development of this project, I plan to add an inventory management system that leverages Python to automate the process of collecting device information from all machines connected to the VPN. This will include:
+
+- __Device Name and Serial Number Collection:__ Using Python scripts, I will query the connected devices, such as Windows laptops and MacBooks, to retrieve their system information (device name and serial number).
+
+- __Automated Data Logging:__ The data will be logged automatically on the Raspberry Pi, where it will be saved into a structured spreadsheet format (such as .xlsx) using Python's OpenPyXL or Pandas library.
+
+- __Scheduling with Crontab:__ To ensure regular data collection, I will implement a crontab job on the Raspberry Pi, which will trigger the Python script at regular intervals. This will allow for seamless and continuous monitoring of devices connected to the VPN.
+
+This enhancement will allow for centralized inventory tracking of devices in a home or office environment, making it easier to manage and monitor connected assets.
